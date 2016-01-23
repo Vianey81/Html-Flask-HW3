@@ -8,8 +8,6 @@ app = Flask(__name__)
 def index_page():
     """Show an index page."""
 
-    # return "<html><body>This is the homepage.</body></html>"
-
     # Alternately, we could make this a Jinja template in `templates/`
     # and return that result of rendering this, like:
     #
@@ -18,11 +16,15 @@ def index_page():
 
 @app.route("/app-form")
 def app_form():
+    """Show the application form."""
+
     return render_template("application-form.html")
 
 
 @app.route("/app-response", methods=["POST"])
 def app_response():
+    """Show a message with the data sent in the app form."""
+
     name = request.form.get("firstname")
     lastname = request.form.get("lastname")
     salary = float(request.form.get("salary"))
